@@ -1,3 +1,5 @@
+import './globals.css'
+
 export const metadata = {
   title: "Aplikasi Perpustakaan",
   description: "Manajemen Buku, Pengguna, dan Peminjaman",

@@ -1,14 +1,12 @@
-// app/api/book/route.ts
-import { prisma } from '@/lib/prisma';
 import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
-  const books = await prisma.book.findMany();
-  return NextResponse.json(books);
-}
-
-export async function POST(req: Request) {
-  const data = await req.json();
-  const book = await prisma.book.create({ data });
-  return NextResponse.json(book, { status: 201 });
+  try {
+    const books = await prisma.book.findMany();
+    return NextResponse.json(books);
+  } catch (error) {
+    console.error('Error get books:', error);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+  }
 }
