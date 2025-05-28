@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack -p 1220",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
@@ -26,7 +27,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
-    "prisma": "^6.4.1",
+    "prisma": "^6.8.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

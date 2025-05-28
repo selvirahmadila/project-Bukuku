@@ -22,10 +22,17 @@ model user {
 }
 
 model book {
-  id      Int    @id @default(autoincrement())
-  judul   String
-  penulis String
-  loans   loan[]
+  id              Int    @id @default(autoincrement())
+  judul           String
+  penulis         String
+  kategori        String?
+  isbn            String? @unique
+  sinopsis        String?
+  jumlaheksemplar Int     @default(1)
+  lokasirak       String?
+  coverimage      String?
+  status          String  @default("available")
+  loans           loan[]
 }
 
 model loan {
