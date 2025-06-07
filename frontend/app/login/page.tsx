@@ -1,79 +1,69 @@
-'use client';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+export default function LoginUserPage() {
+  const [npm, setNpm] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
 
-export default function LoginPage() {
-  const router = useRouter();
-  const [npm, setNpm] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+    const res = await fetch('/api/user/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ npm, password }),
+    })
 
-    if (!npm || !password) {
-      setError('NPM dan Password wajib diisi');
-      return;
+    const data = await res.json()
+
+    if (res.ok) {
+      localStorage.setItem('user', JSON.stringify(data))
+      router.push('/user/home')
+    } else {
+      setError(data.message || 'Login gagal')
     }
-
-    if (npm !== password) {
-      setError('Password harus sama dengan NPM');
-      return;
-    }
-
-    localStorage.setItem('user', JSON.stringify({ npm }));
-    router.push('/');
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg border border-gray-200 transition-all duration-300">
-        <h2 className="text-center text-2xl font-semibold text-gray-800 mb-6">
-          Selamat Datang 
-        </h2>
-
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">Login Mahasiswa</h2>
         {error && (
-          <div className="bg-red-100 text-red-600 text-sm px-4 py-2 mb-4 rounded-md border border-red-300">
-            {error}
-          </div>
+          <p className="bg-red-100 text-red-600 p-2 rounded mb-4">{error}</p>
         )}
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="text-sm text-gray-600 block mb-1">NPM</label>
-            <input
-              type="text"
-              value={npm}
-              onChange={(e) => setNpm(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Masukkan NPM"
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-gray-600 block mb-1">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Masukkan Password"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md transition duration-200"
-          >
-            Login
-          </button>
-        </form>
-
-        <p className="text-center text-xs text-gray-400 mt-6">
-          © {new Date().getFullYear()} Aplikasi Perpustakaan
-        </p>
-      </div>
+        <div className="mb-4">
+          <label className="block mb-1">NPM</label>
+          <input
+            type="text"
+            className="w-full p-2 border rounded"
+            value={npm}
+            onChange={(e) => setNpm(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block mb-1">Password</label>
+          <input
+            type="password"
+            className="w-full p-2 border rounded"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold p-2 rounded"
+        >
+          Login
+        </button>
+      </form>
     </div>
-  );
+  )
 }

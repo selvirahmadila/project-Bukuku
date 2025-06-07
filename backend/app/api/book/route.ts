@@ -1,22 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const q = searchParams.get("q");
-
-  const books = await prisma.book.findMany({
-    where: q
-      ? {
-          OR: [
-            { judul: { contains: q } },
-            { penulis: { contains: q } },
-            { kategori: { contains: q } },
-            { isbn: { contains: q } },
-          ],
-        }
-      : undefined,
-  });
-
-  return NextResponse.json(books);
+export async function GET() {
+  try {
+    const books = await prisma.book.findMany({
+      orderBy: { id: "asc" },
+    });
+    return NextResponse.json(books, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "Gagal mengambil data buku", error }, { status: 500 });
+  }
 }
