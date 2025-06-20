@@ -9,6 +9,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
   const data = await req.json();
 
   const update = await prisma.book.update({ where: { id }, data });
+  return NextResponse.json(update);
 }
 
 export async function DELETE(_: NextRequest, { params }: Params) {
