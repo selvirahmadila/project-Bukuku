@@ -27,5 +27,5 @@ export async function POST(req: NextRequest) {
     data: { judul, penulis, kategori, status, coverimage: `/uploads/${filename}` }
   });
 
-  
+  return NextResponse.json(newBook);
 }
