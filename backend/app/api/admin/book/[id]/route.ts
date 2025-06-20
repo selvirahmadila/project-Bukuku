@@ -12,3 +12,8 @@ export async function PUT(req: NextRequest, { params }: Params) {
   return NextResponse.json(update);
 }
 
+export async function DELETE(_: NextRequest, { params }: Params) {
+  const id = parseInt(params.id);
+  const deleted = await prisma.book.delete({ where: { id } });
+  return NextResponse.json(deleted);
+}
