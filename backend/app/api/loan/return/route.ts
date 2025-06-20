@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
       data: { status: "tersedia" },
     });
 
-    return NextResponse.json({ message: "Buku berhasil dikembalikan" });
+   
   } catch (error) {
     console.error("Error saat pengembalian:", error);
     return NextResponse.json({ message: "Terjadi kesalahan saat mengembalikan buku" }, { status: 500 });
