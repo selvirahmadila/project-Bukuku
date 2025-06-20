@@ -10,5 +10,5 @@ export async function GET(_: NextRequest, { params }: Params) {
     where: { userId: id },
     include: { book: true }
   });
-  return NextResponse.json(history);
+
 }
