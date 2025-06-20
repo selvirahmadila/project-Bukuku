@@ -6,5 +6,5 @@ export async function GET() {
   const loans = await prisma.loan.findMany({
     include: { user: true, book: true }
   });
-  return NextResponse.json(loans);
+  
 }
