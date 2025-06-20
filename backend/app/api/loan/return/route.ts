@@ -27,15 +27,4 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Update status buku ke "tersedia"
-    await prisma.book.update({
-      where: { id: loan.bookId },
-      data: { status: "tersedia" },
-    });
-
-    return NextResponse.json({ message: "Buku berhasil dikembalikan" });
-  } catch (error) {
-    console.error("Error saat pengembalian:", error);
-    return NextResponse.json({ message: "Terjadi kesalahan saat mengembalikan buku" }, { status: 500 });
-  }
 }
