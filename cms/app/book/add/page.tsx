@@ -118,7 +118,7 @@ export default function AddBookPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-700 transition"
+          className="w-full bg-gray-890 text-white py-2 rounded hover:bg-gray-700 transition"
         >
           {loading ? 'Menyimpan...' : 'Simpan Buku'}
         </button>
