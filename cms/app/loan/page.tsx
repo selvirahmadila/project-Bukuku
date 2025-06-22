@@ -40,61 +40,57 @@ export default function AdminLoanPage() {
   const handleLogout = () => router.push('/cms');
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-10">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-xl sm:text-2xl font-semibold text-gray-700">
-            Data Peminjaman Buku
-          </h1>
-          <div className="flex gap-2">
-            <button
-              onClick={handleBack}
-              className="px-4 py-2 bg-gray-200 text-sm text-gray-800 rounded-full hover:bg-gray-300 transition"
-            >
-              Kembali
-            </button>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 bg-blue-500 text-sm text-white rounded-full hover:bg-blue-600 transition"
-            >
-              Logout
-            </button>
-          </div>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-xl font-semibold text-gray-800">Data Peminjaman Buku</h1>
+        <div className="flex gap-2">
+          <button
+            onClick={handleBack}
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+          >
+            Kembali
+          </button>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition"
+          >
+            Logout
+          </button>
         </div>
-
-        {loading ? (
-          <p className="text-center text-gray-500">Memuat data peminjaman...</p>
-        ) : loans.length === 0 ? (
-          <p className="text-center text-gray-500">Belum ada data peminjaman.</p>
-        ) : (
-          <div className="overflow-x-auto bg-white rounded-xl border border-gray-100 shadow-sm">
-            <table className="min-w-full text-sm">
-              <thead className="bg-gray-100 text-gray-600">
-                <tr>
-                  <th className="px-5 py-3 text-left font-medium">Judul Buku</th>
-                  <th className="px-5 py-3 text-left font-medium">NPM</th>
-                  <th className="px-5 py-3 text-left font-medium">Tanggal Pinjam</th>
-                  <th className="px-5 py-3 text-left font-medium">Tanggal Kembali</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-700">
-                {loans.map((loan) => (
-                  <tr key={loan.id} className="border-t hover:bg-gray-50 transition">
-                    <td className="px-5 py-3">{loan.book?.judul || '-'}</td>
-                    <td className="px-5 py-3">{loan.user?.npm || '-'}</td>
-                    <td className="px-5 py-3">
-                      {new Date(loan.loanDate).toLocaleDateString('id-ID')}
-                    </td>
-                    <td className="px-5 py-3">
-                      {new Date(loan.returnDate).toLocaleDateString('id-ID')}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
       </div>
+
+      {loading ? (
+        <p className="text-center text-gray-600">Memuat data peminjaman...</p>
+      ) : loans.length === 0 ? (
+        <p className="text-center text-gray-600">Belum ada data peminjaman.</p>
+      ) : (
+        <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+          <table className="min-w-full text-sm text-left">
+            <thead className="bg-gray-100 border-b border-gray-300 text-gray-700">
+              <tr>
+                <th className="px-4 py-3">Judul Buku</th>
+                <th className="px-4 py-3">NPM User</th>
+                <th className="px-4 py-3">Tanggal Pinjam</th>
+                <th className="px-4 py-3">Tanggal Kembali</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-800">
+              {loans.map((loan) => (
+                <tr key={loan.id} className="border-t hover:bg-gray-50 transition">
+                  <td className="px-4 py-3">{loan.book?.judul || '-'}</td>
+                  <td className="px-4 py-3">{loan.user?.npm || '-'}</td>
+                  <td className="px-4 py-3">
+                    {new Date(loan.loanDate).toLocaleDateString()}
+                  </td>
+                  <td className="px-4 py-3">
+                    {new Date(loan.returnDate).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
