@@ -129,7 +129,7 @@ export default function BookListPage() {
                 </button>
                 <button
                   onClick={() => handleDelete(book.id)}
-                  className="bg-red-1150 hover:bg-red-200 text-red-700 px-3 py-1 rounded transition text-sm"
+                  className="bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded transition text-sm"
                 >
                   Hapus
                 </button>
