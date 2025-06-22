@@ -74,7 +74,7 @@ export default function AdminLoanPage() {
                 <th className="px-4 py-3">Tanggal Kembali</th>
               </tr>
             </thead>
-            <tbody className="text-gray-720">
+            <tbody className="text-gray-800">
               {loans.map((loan) => (
                 <tr key={loan.id} className="border-t hover:bg-gray-50 transition">
                   <td className="px-4 py-3">{loan.book?.judul || '-'}</td>
