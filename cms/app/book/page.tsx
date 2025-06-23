@@ -62,25 +62,25 @@ export default function BookListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 p-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg font-semibold text-gray-800">📘 Daftar Buku</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-xl font-semibold text-gray-800">📘 Daftar Buku</h1>
         <div className="flex gap-2">
           <Link href="/book/add">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-sm">
               ➕ Tambah Buku
             </button>
           </Link>
           <button
             onClick={handleBack}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded text-xs"
+            className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded text-sm"
           >
             Kembali
           </button>
           <button
             onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs"
+            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded text-sm"
           >
             Logout
           </button>
@@ -89,46 +89,57 @@ export default function BookListPage() {
 
       {/* Content */}
       {loading ? (
-        <p className="text-center text-gray-500 text-sm">Memuat data buku...</p>
+        <p className="text-center text-gray-500">Memuat data buku...</p>
       ) : books.length === 0 ? (
-        <p className="text-center text-gray-500 text-sm">Tidak ada buku yang tersedia.</p>
+        <p className="text-center text-gray-500">Tidak ada buku yang tersedia.</p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {books.map((book) => (
             <div
               key={book.id}
-              className="bg-white border border-gray-200 rounded-md shadow-sm hover:shadow-md transition text-xs"
+              className="bg-white border border-gray-200 rounded-md shadow hover:shadow-md transition text-sm overflow-hidden flex flex-col"
             >
+              {/* Cover Buku */}
               {book.coverimage && (
-                <img
-                  src={`http://localhost:1220${encodeURI(book.coverimage)}`}
-                  alt={book.judul}
-                  className="w-full h-36 object-contain p-2 bg-gray-50"
-                />
+                <div className="w-full aspect-[2/3] bg-gray-50">
+                  <img
+                    src={`http://localhost:1220${encodeURI(book.coverimage)}`}
+                    alt={book.judul}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
               )}
-              <div className="px-2 pb-2">
-                <h2 className="font-medium text-gray-800 line-clamp-1">{book.judul}</h2>
-                <p className="text-gray-500 text-[11px]">Penulis: {book.penulis}</p>
-                <span
-                  className={`inline-block mt-1 px-2 py-0.5 rounded-full text-[10px] ${
-                    book.status === 'tersedia'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {book.status}
-                </span>
+
+              {/* Konten Buku */}
+              <div className="p-3 flex-grow flex flex-col justify-between">
+                <div>
+                  <h2 className="text-base font-medium text-gray-800 line-clamp-1">
+                    {book.judul}
+                  </h2>
+                  <p className="text-gray-600 text-sm">Penulis: {book.penulis}</p>
+                  <span
+                    className={`inline-block mt-2 px-2 py-1 text-xs rounded-full ${
+                      book.status === 'tersedia'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
+                    }`}
+                  >
+                    {book.status}
+                  </span>
+                </div>
               </div>
-              <div className="border-t px-2 py-1 flex justify-between">
+
+              {/* Tombol Aksi */}
+              <div className="border-t px-3 py-2 flex justify-between">
                 <button
                   onClick={() => toggleStatus(book)}
-                  className="text-[10px] bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 py-0.5 rounded"
+                  className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded"
                 >
                   Status
                 </button>
                 <button
                   onClick={() => handleDelete(book.id)}
-                  className="text-[10px] bg-red-100 hover:bg-red-200 text-red-700 px-2 py-0.5 rounded"
+                  className="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1 rounded"
                 >
                   Hapus
                 </button>
