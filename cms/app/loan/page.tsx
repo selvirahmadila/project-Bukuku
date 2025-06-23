@@ -67,14 +67,14 @@ export default function AdminLoanPage() {
         ) : loans.length === 0 ? (
           <p className="text-center text-gray-500">Belum ada data peminjaman.</p>
         ) : (
-          <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+          <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-md">
             <table className="min-w-full text-sm text-left">
-              <thead className="bg-gray-50 border-b text-gray-600">
+              <thead className="bg-gray-50 border-b text-gray-700">
                 <tr>
-                  <th className="px-4 py-3 font-medium">Judul Buku</th>
-                  <th className="px-4 py-3 font-medium">NPM User</th>
-                  <th className="px-4 py-3 font-medium">Tanggal Pinjam</th>
-                  <th className="px-4 py-3 font-medium">Tanggal Kembali</th>
+                  <th className="px-4 py-3 font-semibold">Judul Buku</th>
+                  <th className="px-4 py-3 font-semibold">NPM User</th>
+                  <th className="px-4 py-3 font-semibold">Tanggal Pinjam</th>
+                  <th className="px-4 py-3 font-semibold">Tanggal Kembali</th>
                 </tr>
               </thead>
               <tbody className="text-gray-800">
