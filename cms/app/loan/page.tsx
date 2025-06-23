@@ -67,13 +67,13 @@ export default function AdminLoanPage() {
         ) : loans.length === 0 ? (
           <p className="text-center text-gray-500">Belum ada data peminjaman.</p>
         ) : (
-          <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-md">
-            <table className="min-w-full text-sm text-left">
-              <thead className="bg-gray-50 border-b text-gray-700">
+          <div className="overflow-x-auto bg-white border border-gray-200 rounded-lg shadow-sm">
+            <table className="min-w-full text-sm text-left border-collapse">
+              <thead className="bg-gray-100 text-gray-700 border-b border-gray-300">
                 <tr>
-                  <th className="px-4 py-3 font-semibold">Judul Buku</th>
-                  <th className="px-4 py-3 font-semibold">NPM User</th>
-                  <th className="px-4 py-3 font-semibold">Tanggal Pinjam</th>
+                  <th className="px-4 py-3 font-semibold border-r border-gray-200">Judul Buku</th>
+                  <th className="px-4 py-3 font-semibold border-r border-gray-200">NPM User</th>
+                  <th className="px-4 py-3 font-semibold border-r border-gray-200">Tanggal Pinjam</th>
                   <th className="px-4 py-3 font-semibold">Tanggal Kembali</th>
                 </tr>
               </thead>
@@ -81,11 +81,11 @@ export default function AdminLoanPage() {
                 {loans.map((loan) => (
                   <tr
                     key={loan.id}
-                    className="border-t hover:bg-gray-50 transition duration-150"
+                    className="border-t border-gray-200 hover:bg-gray-50 transition duration-150"
                   >
-                    <td className="px-4 py-3">{loan.book?.judul || '-'}</td>
-                    <td className="px-4 py-3">{loan.user?.npm || '-'}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 border-r border-gray-100">{loan.book?.judul || '-'}</td>
+                    <td className="px-4 py-3 border-r border-gray-100">{loan.user?.npm || '-'}</td>
+                    <td className="px-4 py-3 border-r border-gray-100">
                       {new Date(loan.loanDate).toLocaleDateString()}
                     </td>
                     <td className="px-4 py-3">
