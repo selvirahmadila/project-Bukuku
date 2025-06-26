@@ -10,7 +10,7 @@ export default function HomePage() {
   useEffect(() => {
     const storedNama = localStorage.getItem('nama');
     if (!storedNama) {
-      router.push('/login'); // redirect kalau belum login
+      router.push('/login');
     } else {
       setNama(storedNama);
     }
@@ -30,34 +30,37 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 p-4">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold mb-4 text-blue-800">Selamat Datang, {nama} 👋</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-100 to-cyan-100 p-4">
+      <div className="backdrop-blur-md bg-white/70 p-10 rounded-3xl shadow-xl w-full max-w-sm text-center">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-2">
+          Halo, <span className="text-blue-700 font-bold">{nama}</span> 👋
+        </h1>
+        <p className="text-gray-600 text-sm mb-6">Ayo pilih aktivitasmu hari ini</p>
 
-        <p className="mb-6 text-gray-700">Silakan pilih menu di bawah ini:</p>
-
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3">
           <button
             onClick={goToBooks}
-            className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
           >
-            📚 Lihat Daftar Buku
+            <span>📚</span> <span>Lihat Daftar Buku</span>
           </button>
 
           <button
             onClick={goToLoans}
-            className="bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
           >
-            📖 Riwayat Peminjaman
+            <span>🗂️</span> <span>Riwayat Peminjaman</span>
           </button>
 
           <button
             onClick={handleLogout}
-            className="bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
           >
-            🔓 Logout
+            <span>🚪</span> <span>Logout</span>
           </button>
         </div>
+
+        <p className="text-[10px] text-gray-500 mt-6">Versi Mahasiswa • 2025</p>
       </div>
     </div>
   );
