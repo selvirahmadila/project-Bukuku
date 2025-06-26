@@ -52,42 +52,54 @@ export default function AjukanPeminjaman() {
   };
 
   if (loading) {
-    return <div className="p-6 text-center">Loading...</div>;
+    return <div className="p-6 text-center">Memuat data buku...</div>;
   }
 
   if (!book) {
-    return <div className="p-6 text-center text-red-500">Buku tidak ditemukan</div>;
+    return <div className="p-6 text-center text-red-500">Buku tidak ditemukan.</div>;
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-xl mx-auto bg-white rounded-xl shadow p-6">
-        <h1 className="text-2xl font-bold mb-4 text-center text-blue-800">Ajukan Peminjaman</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block font-medium">Judul Buku</label>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6">
+        <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
+          Ajukan Peminjaman
+        </h1>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Judul Buku</label>
             <input
               type="text"
               value={book.judul}
               readOnly
-              className="w-full border px-3 py-2 rounded bg-gray-100"
+              className="w-full px-3 py-2 bg-gray-100 border rounded-md"
             />
           </div>
-          <div className="mb-4">
-            <label className="block font-medium">Penulis</label>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Penulis</label>
             <input
               type="text"
               value={book.penulis}
               readOnly
-              className="w-full border px-3 py-2 rounded bg-gray-100"
+              className="w-full px-3 py-2 bg-gray-100 border rounded-md"
             />
           </div>
-          <div className="flex justify-end">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+            <input
+              type="text"
+              value={book.kategori}
+              readOnly
+              className="w-full px-3 py-2 bg-gray-100 border rounded-md"
+            />
+          </div>
+          <div className="pt-4">
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
             >
-              Ajukan
+              📥 Ajukan Peminjaman
             </button>
           </div>
         </form>
