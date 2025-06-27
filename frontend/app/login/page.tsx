@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Lock, User, GraduationCap } from 'lucide-react'; // ← install lucide-react
+import { Lock, User, GraduationCap } from 'lucide-react';
 
 export default function LoginPage() {
   const [nama, setNama] = useState('');
@@ -38,10 +38,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 to-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-white px-4">
       <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
         <div className="flex items-center justify-center mb-6">
-          <Lock className="text-blue-600 w-6 h-6 mr-2" />
+          <Lock className="text-gray-600 w-6 h-6 mr-2" />
           <h1 className="text-2xl font-semibold text-gray-800">Login Mahasiswa</h1>
         </div>
 
@@ -52,11 +52,11 @@ export default function LoginPage() {
         )}
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <div className="relative">
+          <div>
             <label htmlFor="nama" className="block text-sm font-medium text-gray-600 mb-1">
               Nama Lengkap
             </label>
-            <div className="flex items-center border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
               <User className="w-4 h-4 text-gray-400 mr-2" />
               <input
                 id="nama"
@@ -70,11 +70,11 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <div className="relative">
+          <div>
             <label htmlFor="npm" className="block text-sm font-medium text-gray-600 mb-1">
               NPM
             </label>
-            <div className="flex items-center border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
               <GraduationCap className="w-4 h-4 text-gray-400 mr-2" />
               <input
                 id="npm"
@@ -90,7 +90,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition"
+            className="w-full bg-gray-700 hover:bg-gray-800 text-white text-sm font-medium py-2.5 rounded-lg transition"
           >
             Masuk
           </button>
