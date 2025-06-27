@@ -46,7 +46,7 @@ export default function HomePage() {
 
           <button
             onClick={goToLoans}
-            className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="bg-grey-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
           >
             📖 Riwayat Peminjaman
           </button>
