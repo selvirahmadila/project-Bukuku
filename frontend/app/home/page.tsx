@@ -30,37 +30,37 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-100 to-cyan-100 p-4">
-      <div className="backdrop-blur-md bg-white/70 p-10 rounded-3xl shadow-xl w-full max-w-sm text-center">
-        <h1 className="text-2xl font-semibold text-gray-800 mb-2">
-          Halo, <span className="text-blue-700 font-bold">{nama}</span> 👋
-        </h1>
-        <p className="text-gray-600 text-sm mb-6">Ayo pilih aktivitasmu hari ini</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-300 via-white to-blue-100 p-4">
+      <div className="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-md transition-all duration-300">
+        <h2 className="text-3xl font-extrabold text-center text-blue-700 mb-2">👋 Selamat Datang</h2>
+        <p className="text-center text-gray-600 text-sm mb-6">
+          Hai <span className="font-semibold text-blue-800">{nama}</span>, silakan pilih aksi:
+        </p>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           <button
             onClick={goToBooks}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
+            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
           >
-            <span>📚</span> <span>Lihat Daftar Buku</span>
+            📚 Lihat Daftar Buku
           </button>
 
           <button
             onClick={goToLoans}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
+            className="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg transition"
           >
-            <span>🗂️</span> <span>Riwayat Peminjaman</span>
+            📖 Riwayat Peminjaman
           </button>
 
           <button
             onClick={handleLogout}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white py-2 rounded-full shadow hover:scale-105 transition"
+            className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white font-medium py-2 rounded-lg transition"
           >
-            <span>🚪</span> <span>Logout</span>
+            🚪 Keluar
           </button>
         </div>
 
-        <p className="text-[10px] text-gray-500 mt-6">Versi Mahasiswa • 2025</p>
+        <p className="text-xs text-center text-gray-400 mt-6">© 2025 Bukuku. Mahasiswa</p>
       </div>
     </div>
   );
