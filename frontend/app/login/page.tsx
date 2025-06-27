@@ -41,7 +41,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-200 to-white">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center text-blue-800">
-          📚 Login Mahasiswa
+           Login Mahasiswa
         </h2>
         {error && (
           <div className="bg-red-100 text-red-700 p-2 rounded mb-4 text-center">
