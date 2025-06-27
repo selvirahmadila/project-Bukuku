@@ -81,13 +81,12 @@ export default function BookList() {
                     </span>
 
                     {isAvailable && (
-                  <button
-  onClick={() => router.push(`/book/ajukan?bookId=${book.id}`)}
-  className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
->
-  ➕ Ajukan Peminjaman
-</button>
-
+                      <button
+                        onClick={() => router.push(`/book/ajukan?bookId=${book.id}`)}
+                        className="text-sm bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition"
+                      >
+                        ➕ Ajukan Peminjaman
+                      </button>
                     )}
                   </div>
                 </div>

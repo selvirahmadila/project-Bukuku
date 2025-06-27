@@ -62,7 +62,7 @@ export default function AjukanPeminjaman() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6">
-        <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Ajukan Peminjaman
         </h1>
 
@@ -97,7 +97,7 @@ export default function AjukanPeminjaman() {
           <div className="pt-4">
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
+              className="w-full bg-gray-700 hover:bg-gray-800 text-white py-2 rounded-lg font-semibold transition"
             >
               📥 Ajukan Peminjaman
             </button>
