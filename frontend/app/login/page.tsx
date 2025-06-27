@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Lock, User, GraduationCap } from 'lucide-react';
 
 export default function LoginPage() {
   const [nama, setNama] = useState('');
@@ -27,78 +26,64 @@ export default function LoginPage() {
         localStorage.setItem('userId', data.user.id);
         localStorage.setItem('nama', data.user.nama);
         localStorage.setItem('npm', data.user.npm);
+
         router.push('/home');
       } else {
         setError('Login gagal, periksa kembali nama dan NPM.');
       }
-    } catch (err) {
-      console.error('Login error:', err);
+    } catch (error) {
+      console.error('Login error:', error);
       setError('Terjadi kesalahan. Silakan coba lagi.');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-white px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
-        <div className="flex items-center justify-center mb-6">
-          <Lock className="text-gray-600 w-6 h-6 mr-2" />
-          <h1 className="text-2xl font-semibold text-gray-800">Login Mahasiswa</h1>
-        </div>
-
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-200 to-white">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-800">
+          📚 Login Mahasiswa
+        </h2>
         {error && (
-          <div className="bg-red-50 text-red-600 border border-red-200 text-sm px-4 py-2 rounded mb-4 text-center">
+          <div className="bg-red-100 text-red-700 p-2 rounded mb-4 text-center">
             {error}
           </div>
         )}
-
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label htmlFor="nama" className="block text-sm font-medium text-gray-600 mb-1">
-              Nama Lengkap
+            <label htmlFor="nama" className="block text-gray-700 font-medium mb-1">
+              Nama
             </label>
-            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
-              <User className="w-4 h-4 text-gray-400 mr-2" />
-              <input
-                id="nama"
-                type="text"
-                value={nama}
-                onChange={(e) => setNama(e.target.value)}
-                placeholder="Masukkan nama Anda"
-                required
-                className="w-full outline-none text-sm text-gray-700 bg-transparent"
-              />
-            </div>
+            <input
+              type="text"
+              id="nama"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan nama Anda"
+              required
+            />
           </div>
-
           <div>
-            <label htmlFor="npm" className="block text-sm font-medium text-gray-600 mb-1">
+            <label htmlFor="npm" className="block text-gray-700 font-medium mb-1">
               NPM
             </label>
-            <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
-              <GraduationCap className="w-4 h-4 text-gray-400 mr-2" />
-              <input
-                id="npm"
-                type="text"
-                value={npm}
-                onChange={(e) => setNpm(e.target.value)}
-                placeholder="Masukkan NPM Anda"
-                required
-                className="w-full outline-none text-sm text-gray-700 bg-transparent"
-              />
-            </div>
+            <input
+              type="text"
+              id="npm"
+              value={npm}
+              onChange={(e) => setNpm(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Masukkan NPM Anda"
+              required
+            />
           </div>
-
           <button
             type="submit"
-            className="w-full bg-gray-700 hover:bg-gray-800 text-white text-sm font-medium py-2.5 rounded-lg transition"
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
           >
-            Masuk
+            Login
           </button>
         </form>
-
-        <p className="text-xs text-gray-400 text-center mt-6">
-          &copy; 2025 <span className="font-medium text-gray-500">Bukuku</span>. All rights reserved.
-        </p>
       </div>
     </div>
   );
